@@ -21,7 +21,12 @@ Below is the attack map generated from the honeypot data. The map aggregates "Fa
 <img width="1486" height="520" alt="image" src="https://github.com/user-attachments/assets/0111f3f7-bf28-458e-9f1d-80c32358f3db" />
 
 
+
 ## 🛠️ Technical Challenges & Solutions
+
+* **Resource Constraints & OS Selection:** * The lab tutorials I referenced utilized Windows-based honeypots. However, due to Azure Free Tier resource limitations on lightweight VMs, I pivoted to a Linux-based environment.
+    * **Strategic Pivot:** I deployed an Ubuntu Pro instance. While this required deviating from the tutorial's Windows-based steps, it provided a valuable opportunity to learn the differences between **RDP** (Windows Remote Desktop Protocol) and **SSH** (Secure Shell) authentication telemetry.
+* **Log Ingestion & Parsing:** * Moving to Ubuntu meant I could not rely on Windows Event Logs. I had to identify the relevant Linux auth logs, define new log ingestion rules in the Azure Monitor Agent, and utilize Regex in KQL to parse raw, unstructured SSH syslog data.
 * **Data Integration:** Initial raw SSH logs required complex extraction using Regex in KQL to isolate attacker IP addresses from unstructured text.
 * **UI/UX Debugging:** Encountered a persistent bug where the Map widget's UI dropdowns failed to populate and threw a `locInfo` validation error.
 * **Code-Level Resolution:** Bypassed the broken UI by directly modifying the Workbook's JSON code in the **Advanced Editor**. Explicitly defined `mapSettings` to bind `LatLong` data and `FailureCount` metrics, ensuring the map successfully rendered geographic clusters.
