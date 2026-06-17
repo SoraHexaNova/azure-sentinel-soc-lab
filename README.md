@@ -18,7 +18,8 @@ Deployed a cloud-based honeypot environment on Microsoft Azure to capture, inges
 ## 📈 Visualizing Attacks
 Below is the attack map generated from the honeypot data. The map aggregates "Failed password" and "Invalid user" attempts, geolocating attacker IPs to identify global attack patterns.
 
-![Insert your map screenshot here]
+<img width="1486" height="520" alt="image" src="https://github.com/user-attachments/assets/0111f3f7-bf28-458e-9f1d-80c32358f3db" />
+
 
 ## 🛠️ Technical Challenges & Solutions
 * **Data Integration:** Initial raw SSH logs required complex extraction using Regex in KQL to isolate attacker IP addresses from unstructured text.
