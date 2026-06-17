@@ -31,3 +31,7 @@ This project was conducted in a controlled lab environment. The virtual machine 
 ## TODO
 - Implement automated alerts to trigger notifications upon high-volume brute-force attempts.
 - Integrate Azure Network Watcher to analyze incoming traffic flow logs for deeper network threat intelligence.
+- SOAR Automation Playbooks
+- Threat Intelligence Feeds
+- MITRE ATT&CK Mapping
+- Automated Incident Response
