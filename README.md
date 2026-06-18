@@ -9,6 +9,11 @@ Deployed a cloud-based honeypot environment on Microsoft Azure to capture, inges
 - **SIEM:** Microsoft Sentinel for threat detection and visualization.
 - **Visualization:** Custom Azure Workbook Map plotting attack telemetry in real-time.
 
+##Architecture diagram
+- I put together this architecture diagram to show how all the pieces of the lab actually talk to each other. It maps out the full journey of an attack—starting from a random bot hitting the public-facing honeypot, to getting parsed in Log Analytics, and finally showing up as a live plot on the map.
+<img width="1696" height="927" alt="architecture diagram" src="https://github.com/user-attachments/assets/1f90e8ad-0853-4a87-981e-f32279033603" />
+
+
 ## 🔑 Key Skills Used
 - **Cloud Security:** Hardening and monitoring virtual machine telemetry.
 - **Log Analysis:** Querying and parsing unstructured SSH syslog data.
