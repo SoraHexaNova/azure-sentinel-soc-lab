@@ -1,0 +1,12 @@
+Syslog
+| where ProcessName == "sshd"
+| where SyslogMessage has_any ("Failed password", "Invalid user", "Connection closed by")
+| extend AttackerIP = extract(@"([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})", 1, SyslogMessage)
+| where isnotempty(AttackerIP) and AttackerIP != "10.0.0.4" and AttackerIP != "127.0.0.1"
+| extend GeoIPInfo = geo_info_from_ip_address(AttackerIP)
+| extend country = tostring(parse_json(GeoIPInfo).country),
+         city = tostring(parse_json(GeoIPInfo).city),
+         latitude = toreal(parse_json(GeoIPInfo).latitude),
+         longitude = toreal(parse_json(GeoIPInfo).longitude)
+| summarize FailureCount = count() by AttackerIP, latitude, longitude, city, country
+| project FailureCount, AttackerIp = AttackerIP, latitude, longitude, city, country, friendly_location = strcat(city, " (", country, ")")
